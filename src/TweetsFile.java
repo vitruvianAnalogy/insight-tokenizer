@@ -9,7 +9,7 @@ public class TweetsFile {
 		this.fileName = fileName;
 	}
 	
-	private ArrayList<Tweet> listOfTweets;
+	private ArrayList<Tweet> listOfTweets = new ArrayList<Tweet>();
 	public ArrayList<Tweet> getListOfTweets() {
 		return listOfTweets;
 	}
