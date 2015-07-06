@@ -22,12 +22,12 @@ public class Tokenizer {
 		}		
 	}	
 
-	private HashMap<Integer,Tweet> myTweets = new HashMap<Integer,Tweet>();
-	public HashMap<Integer,Tweet> getMyTweets() {
+	private ArrayList<Tweet> myTweets = new ArrayList<Tweet>();
+	public ArrayList<Tweet> getMyTweets() {
 		return myTweets;
 	}
 	public void addMyTweets(Tweet myTweet) {
-		myTweets.put(myTweets.size()+1, myTweet);
+		this.myTweets.add(myTweet);
 	}
 	
 	
@@ -76,5 +76,6 @@ public class Tokenizer {
 	public void writeFile(String fileName) throws IOException{
 		BufferedWriter writer = new BufferedWriter(new FileWriter(fileName));		
 	}
+
 
 }
