@@ -28,20 +28,22 @@ public class ManagerApp {
 			int tweetNumber = 0;
 			for(Tweet myTweet : myTweets){
 				tweetNumber++;
-				int median = 0;
+//				float median = 0;
 				if(tweetNumber%2 == 1)
 				{
 					int medianLocation = tweetNumber/2;
-					median = myTweets.get(medianLocation).getUniqueTokens().size();
+//					median = myTweets.get(medianLocation).getUniqueTokens().size();
+					System.out.println(myTweets.get(medianLocation).getUniqueTokens().size());
 					
 				}
 				else if(tweetNumber%2 == 0){
 					int medianLocation1 = tweetNumber/2;
-					int medianLocation2 = (tweetNumber/2) + 1;
-					median = myTweets.get(medianLocation2).getUniqueTokens().size() + myTweets.get(medianLocation1).getUniqueTokens().size();
+					int medianLocation2 = (tweetNumber/2) - 1;
+//					median = ((float)myTweets.get(medianLocation2).getUniqueTokens().size() + (float)myTweets.get(medianLocation1).getUniqueTokens().size())/2;
+					System.out.println(((float)myTweets.get(medianLocation2).getUniqueTokens().size() + (float)myTweets.get(medianLocation1).getUniqueTokens().size())/2);
 				}
 					
-						
+//				System.out.println(median);	
 			}
 			
 			
