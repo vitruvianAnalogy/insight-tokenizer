@@ -1,6 +1,5 @@
 import java.io.*;
 import java.util.*;
-import java.util.Map.*;
 
 
 public class ManagerApp {
@@ -9,7 +8,7 @@ public class ManagerApp {
 		// TODO Auto-generated method stub
 		
 		String fileName = args[0];
-		String delimiters = "";
+		String delimiters = " ";
 		
 		//First task is to create a Tokenizer that tokenizes the text and store it in a DS
 		Tokenizer myTokenizer = new Tokenizer();
