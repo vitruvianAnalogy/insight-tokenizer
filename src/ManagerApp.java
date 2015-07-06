@@ -25,10 +25,26 @@ public class ManagerApp {
 			}
 			
 			//FEATURE TWO : PRINT MEDIAN OF UNIQUE TOKENS
-			HashMap<Integer,Tweet> myTweets = myTokenizer.getMyTweets();
-			for(Entry<Integer, Tweet> myTweet : myTweets.entrySet()){
-				
+			ArrayList<Tweet> myTweets = myTokenizer.getMyTweets();
+			int tweetNumber = 0;
+			for(Tweet myTweet : myTweets){
+				tweetNumber++;
+				int median = 0;
+				if(tweetNumber%2 == 1)
+				{
+					int medianLocation = tweetNumber/2;
+					median = myTweets.get(medianLocation).getUniqueTokens().size();
+					
+				}
+				else if(tweetNumber%2 == 0){
+					int medianLocation1 = tweetNumber/2;
+					int medianLocation2 = (tweetNumber/2) + 1;
+					median = myTweets.get(medianLocation2).getUniqueTokens().size() + myTweets.get(medianLocation1).getUniqueTokens().size();
+				}
+					
+						
 			}
+			
 			
 
 		} 
