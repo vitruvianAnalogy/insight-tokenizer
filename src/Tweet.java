@@ -18,7 +18,7 @@ public class Tweet {
 	}
 	
 	//Since a Tweet can occur in multiple files
-	private ArrayList<String> fileName;
+	private ArrayList<String> fileName = new ArrayList<String>();
 	public ArrayList<String> getFileName() {
 		return fileName;
 	}
@@ -40,7 +40,7 @@ public class Tweet {
 	}
 	
 	
-	private ArrayList<String> tokens;
+	private ArrayList<String> tokens = new ArrayList<String>();
 	public ArrayList<String> getTokens() {
 		return tokens;
 	}
