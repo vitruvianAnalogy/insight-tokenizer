@@ -12,7 +12,7 @@ public class Tokenizer {
 	}	
 	public void addToken(String token){		
 		if(myTokens.containsKey(token))
-			myTokens.replace(token, myTokens.get(token).intValue()+1);
+			myTokens.put(token, myTokens.get(token).intValue()+1);
 		else
 			myTokens.put(token, 1);		
 	}
@@ -66,7 +66,8 @@ public class Tokenizer {
 			//split into tokens
 			lineTokens = line.split(delimiters);
 			//AddTokens to tweets
-			myTweet.setTokens(lineTokens);
+			//myTweet.setTokens(lineTokens);
+			myTweet.setUniqueTokens(lineTokens);
 			//Add tokens to the token hashmap
 			this.addTokens(lineTokens);
 			this.addMyTweets(myTweet);
