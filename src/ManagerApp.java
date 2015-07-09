@@ -8,6 +8,7 @@ public class ManagerApp {
 		// TODO Auto-generated method stub
 		
 		String fileName = args[0];
+		String outputFileName = args[1];
 		String delimiters = " ";
 		
 		//First task is to create a Tokenizer that tokenizes the text and store it in a DS
@@ -17,36 +18,12 @@ public class ManagerApp {
 			//Tokenizing tweets from the file
 			myTokenizer.tokenize(delimiters, fileName);
 			
-			//FEATURE ONE : PRINT TOKENS AND THEIR FREQUENCIES
-			HashMap<String,Integer> myTokens = myTokenizer.getMyTokens();
-			for (String token : myTokens.keySet()){
-				System.out.println(token + " " +myTokens.get(token).intValue());
-			}
+			//Calling Feature 1
+			myTokenizer.printTokenFrequencies();
 			
-			//FEATURE TWO : PRINT MEDIAN OF UNIQUE TOKENS
-			ArrayList<Tweet> myTweets = myTokenizer.getMyTweets();
-			int tweetNumber = 0;
-			for(Tweet myTweet : myTweets){
-				tweetNumber++;
-//				float median = 0;
-				if(tweetNumber%2 == 1)
-				{
-					int medianLocation = tweetNumber/2;
-//					median = myTweets.get(medianLocation).getUniqueTokens().size();
-					System.out.println(myTweets.get(medianLocation).getUniqueTokens().size());
-					
-				}
-				else if(tweetNumber%2 == 0){
-					int medianLocation1 = tweetNumber/2;
-					int medianLocation2 = (tweetNumber/2) - 1;
-//					median = ((float)myTweets.get(medianLocation2).getUniqueTokens().size() + (float)myTweets.get(medianLocation1).getUniqueTokens().size())/2;
-					System.out.println(((float)myTweets.get(medianLocation2).getUniqueTokens().size() + (float)myTweets.get(medianLocation1).getUniqueTokens().size())/2);
-				}
-					
-//				System.out.println(median);	
-			}
-			
-			
+			//Calling Feature 2
+			float[] median = myTokenizer.medianUniqueTokens();
+			myTokenizer.writeFile()
 
 		} 
 		catch (IOException e) 
