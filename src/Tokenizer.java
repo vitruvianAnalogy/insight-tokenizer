@@ -6,6 +6,9 @@ public class Tokenizer {
 	@SuppressWarnings("unused")
 	private BufferedReader reader;
 	
+	/**
+	 * The set of tokens and their frequencies and their getter and setter methods.
+	 */
 	private HashMap<String,Integer> myTokens = new HashMap<String,Integer>();
 	public HashMap<String, Integer> getMyTokens() {
 		return myTokens;
@@ -21,7 +24,45 @@ public class Tokenizer {
 			addToken(myToken);			
 		}		
 	}	
+			
+	/**
+	 *Feature 1 : The function that prints the frequencies of the tokens 
+	 */
+	public void printTokenFrequencies(){
+		//FEATURE ONE : PRINT TOKENS AND THEIR FREQUENCIES
+		for (String token : myTokens.keySet()){
+			System.out.println(token + " " +myTokens.get(token).intValue());
+		}
+	}
 
+	/**
+	 *Feature 2 :  The feature the prints the median of unique tokens
+	 */
+	public float[] medianUniqueTokens(){
+		//FEATURE TWO : PRINT MEDIAN OF UNIQUE TOKENS
+		int tweetNumber = 0;
+		float[] median = new float[myTweets.size()];
+		for(Tweet myTweet : myTweets){
+			tweetNumber++;
+			if(tweetNumber%2 == 1)
+			{
+				int medianLocation = tweetNumber/2;
+				median[tweetNumber-1]= (myTweets.get(medianLocation).getUniqueTokens().size());
+				
+			}
+			else if(tweetNumber%2 == 0){
+				int medianLocation1 = tweetNumber/2;
+				int medianLocation2 = (tweetNumber/2) - 1;
+				median[tweetNumber-1]=((float)myTweets.get(medianLocation2).getUniqueTokens().size() + (float)myTweets.get(medianLocation1).getUniqueTokens().size())/2;
+			}
+			
+		}
+		return median;
+	}
+
+	/**
+	 * The set of tweets and their frequencies and their getter and setter methods.
+	 */
 	private ArrayList<Tweet> myTweets = new ArrayList<Tweet>();
 	public ArrayList<Tweet> getMyTweets() {
 		return myTweets;
@@ -30,7 +71,7 @@ public class Tokenizer {
 		this.myTweets.add(myTweet);
 	}
 	
-	
+	//Returns count of a single token
 	public int returnCountOfToken(String token){		
 		int totalCount = 0;
 		
@@ -65,17 +106,23 @@ public class Tokenizer {
 
 			//split into tokens
 			lineTokens = line.split(delimiters);
+			
 			//AddTokens to tweets
-			//myTweet.setTokens(lineTokens);
 			myTweet.setUniqueTokens(lineTokens);
+			
 			//Add tokens to the token hashmap
 			this.addTokens(lineTokens);
 			this.addMyTweets(myTweet);
 		}
 	}
 	
-	public void writeFile(String fileName) throws IOException{
-		BufferedWriter writer = new BufferedWriter(new FileWriter(fileName));		
+	public void writeFile(String fileName, float[] median) throws IOException{
+		PrintWriter printer = new PrintWriter(new FileWriter(fileName));
+		int counter = 0;
+		while(counter!=median.length){
+			printer.println(median[counter]);
+			counter++;
+		}
 	}
 
 
