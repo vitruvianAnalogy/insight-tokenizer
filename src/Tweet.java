@@ -39,16 +39,7 @@ public class Tweet {
 		return uniqueTokens;
 	}
 	
-	
-	private ArrayList<String> tokens = new ArrayList<String>();
-	public ArrayList<String> getTokens() {
-		return tokens;
-	}
-	public void setTokens(String[] tokens) {
-		for(String token : tokens)
-			this.tokens.add(token);
-	}
-	
+
 	//Constructor
 	public Tweet(String value, String fileName){
 		this.setValue(value);
