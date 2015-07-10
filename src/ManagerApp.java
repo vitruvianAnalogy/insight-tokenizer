@@ -6,9 +6,10 @@ public class ManagerApp {
 	
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		
-		String fileName = args[0];
-		String outputFileName = args[1];
+
+		String fileName = System.getProperty("user.dir")+File.separator+"tweet_input"+File.separator+"tweets.txt";
+		String outPutFileName1 = System.getProperty("user.dir")+File.separator+"tweet_output"+File.separator+"ft1.txt";
+		String outPutFileName2 = System.getProperty("user.dir")+File.separator+"tweet_output"+File.separator+"ft2.txt";
 		String delimiters = " ";
 		
 		//First task is to create a Tokenizer that tokenizes the text and store it in a DS
@@ -19,20 +20,20 @@ public class ManagerApp {
 			myTokenizer.tokenize(delimiters, fileName);
 			
 			//Calling Feature 1
-			myTokenizer.printTokenFrequencies();
+			TreeMap<String,Integer> myTokens = myTokenizer.getMyTokens();
+			myTokenizer.writeFile(outPutFileName1, myTokens);
 			
 			//Calling Feature 2
 			float[] median = myTokenizer.medianUniqueTokens();
-			myTokenizer.writeFile()
+			myTokenizer.writeFile(outPutFileName2,median);
 
 		} 
-		catch (IOException e) 
+		catch (IOException ex) 
 		{
 			// TODO Auto-generated catch block
-			e.printStackTrace();
+			System.out.println(ex.getMessage());
 		}
 		
-		//Second task is to call feature one
 	}
 
 }
