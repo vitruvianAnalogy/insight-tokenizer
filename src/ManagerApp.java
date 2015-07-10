@@ -1,15 +1,16 @@
 import java.io.*;
 import java.util.*;
-import java.util.Map.*;
 
 
 public class ManagerApp {
 	
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		
-		String fileName = args[0];
-		String delimiters = "";
+
+		String fileName = System.getProperty("user.dir")+File.separator+"tweet_input"+File.separator+"tweets.txt";
+		String outPutFileName1 = System.getProperty("user.dir")+File.separator+"tweet_output"+File.separator+"ft1.txt";
+		String outPutFileName2 = System.getProperty("user.dir")+File.separator+"tweet_output"+File.separator+"ft2.txt";
+		String delimiters = " ";
 		
 		//First task is to create a Tokenizer that tokenizes the text and store it in a DS
 		Tokenizer myTokenizer = new Tokenizer();
@@ -18,27 +19,21 @@ public class ManagerApp {
 			//Tokenizing tweets from the file
 			myTokenizer.tokenize(delimiters, fileName);
 			
-			//FEATURE ONE : PRINT TOKENS AND THEIR FREQUENCIES
-			HashMap<String,Integer> myTokens = myTokenizer.getMyTokens();
-			for (String token : myTokens.keySet()){
-				System.out.println(token + " " +myTokens.get(token).intValue());
-			}
+			//Calling Feature 1
+			TreeMap<String,Integer> myTokens = myTokenizer.getMyTokens();
+			myTokenizer.writeFile(outPutFileName1, myTokens);
 			
-			//FEATURE TWO : PRINT MEDIAN OF UNIQUE TOKENS
-			HashMap<Integer,Tweet> myTweets = myTokenizer.getMyTweets();
-			for(Entry<Integer, Tweet> myTweet : myTweets.entrySet()){
-				
-			}
-			
+			//Calling Feature 2
+			float[] median = myTokenizer.medianUniqueTokens();
+			myTokenizer.writeFile(outPutFileName2,median);
 
 		} 
-		catch (IOException e) 
+		catch (IOException ex) 
 		{
 			// TODO Auto-generated catch block
-			e.printStackTrace();
+			System.out.println(ex.getMessage());
 		}
 		
-		//Second task is to call feature one
 	}
 
 }

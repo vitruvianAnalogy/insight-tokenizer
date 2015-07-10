@@ -10,7 +10,6 @@ public class Tweet {
 	public void setValue(String value) {
 		this.value = value;
 	}
-	
 	public Tweet getByValue(String value){
 		if(this.value.equals(value)){
 			return this;
@@ -19,7 +18,7 @@ public class Tweet {
 	}
 	
 	//Since a Tweet can occur in multiple files
-	private ArrayList<String> fileName;
+	private ArrayList<String> fileName = new ArrayList<String>();
 	public ArrayList<String> getFileName() {
 		return fileName;
 	}
@@ -30,37 +29,23 @@ public class Tweet {
 		this.fileName.add(fileName);
 	}
 	
-	//all the Tokens
-//	private Token[] tokens;
-//	public Token[] getTokens() {
-//		return tokens;
-//	}
-//	public void setTokens(Token[] tokens) {
-//		this.tokens = tokens;
-//	}
 	
-//	private String[] tokens;
-//	public String[] getTokens() {
-//		return tokens;
-//	}
-//	public void setTokens(String[] tokens) {
-//		this.tokens = tokens;		
-//	}
-
-	private ArrayList<String> tokens;
-	public ArrayList<String> getTokens() {
-		return tokens;
-	}
-	public void setTokens(String[] tokens) {
+	HashSet<String> uniqueTokens = new HashSet<String>();
+	public void setUniqueTokens(String[] tokens) {
 		for(String token : tokens)
-			this.tokens.add(token);
+			this.uniqueTokens.add(token);
+	}
+	public HashSet<String> getUniqueTokens() {
+		return uniqueTokens;
 	}
 	
+
 	//Constructor
 	public Tweet(String value, String fileName){
 		this.setValue(value);
 		this.addToListOfFileNames(fileName);
 	}
 	
+
 	
 }
