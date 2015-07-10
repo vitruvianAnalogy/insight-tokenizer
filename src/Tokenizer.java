@@ -8,9 +8,10 @@ public class Tokenizer {
 	
 	/**
 	 * The set of tokens and their frequencies and their getter and setter methods.
+	 * Provides solution to Feature 1
 	 */
-	private HashMap<String,Integer> myTokens = new HashMap<String,Integer>();
-	public HashMap<String, Integer> getMyTokens() {
+	private TreeMap<String,Integer> myTokens = new TreeMap<String,Integer>();
+	public TreeMap<String, Integer> getMyTokens() {
 		return myTokens;
 	}	
 	public void addToken(String token){		
@@ -25,15 +26,6 @@ public class Tokenizer {
 		}		
 	}	
 			
-	/**
-	 *Feature 1 : The function that prints the frequencies of the tokens 
-	 */
-	public void printTokenFrequencies(){
-		//FEATURE ONE : PRINT TOKENS AND THEIR FREQUENCIES
-		for (String token : myTokens.keySet()){
-			System.out.println(token + " " +myTokens.get(token).intValue());
-		}
-	}
 
 	/**
 	 *Feature 2 :  The feature the prints the median of unique tokens
@@ -116,6 +108,10 @@ public class Tokenizer {
 		}
 	}
 	
+	
+	/**
+	 *Feature 2 : The function that prints the frequencies of the tokens 
+	 */
 	public void writeFile(String fileName, float[] median) throws IOException{
 		PrintWriter printer = new PrintWriter(new FileWriter(fileName));
 		int counter = 0;
@@ -123,6 +119,19 @@ public class Tokenizer {
 			printer.println(median[counter]);
 			counter++;
 		}
+		printer.close();
+	}
+	
+	/**
+	 *Feature 1 : The function that prints the frequencies of the tokens 
+	 */
+	public void writeFile(String fileName, TreeMap<String, Integer> myTokens2) throws IOException {
+		PrintWriter printer = new PrintWriter(new FileWriter(fileName));
+		for (String token : myTokens.keySet()){
+			printer.println(token + " " +myTokens.get(token).intValue());
+		}
+		printer.close();
+		
 	}
 
 
